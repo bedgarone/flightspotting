@@ -1,0 +1,90 @@
+// font
+@import url("https://fonts.googleapis.com/css2?family=Changa:wght@200;400;500;700&family=Gugi&display=swap");
+
+// partials
+@import "colors";
+@import "gallery";
+@import "breakpoints";
+@import "button";
+@import "grid";
+
+body {
+  margin: 0;
+  font-family: "Changa", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  font-weight: 400;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// borders
+$border-thickness: 1px;
+$border-radius: 30px;
+
+// shadow
+$box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
+
+// font-sizes
+$font-size: 1rem;
+$font-size-usm: $font-size * 0.6;
+$font-size-sm: $font-size * 0.85;
+$font-size-med: $font-size * 1.15;
+$font-size-lg: $font-size * 1.35;
+$font-size-xl: $font-size * 1.5;
+$font-size-xxl: $font-size * 2;
+
+.font-small {
+  font-size: $font-size-sm;
+}
+
+.title-logo {
+  font-size: 72px;
+  background: -webkit-linear-gradient($orange, $blue);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.flight-btn {
+  display: flex;
+  flex-direction: row;
+}
+
+.fl-time {
+  width: 50px;
+  text-align: center;
+  margin-left: -5px;
+}
+
+.flight-list {
+  max-height: 400px;
+  overflow: scroll;
+}
+
+.airline {
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.foreign-city {
+  margin-left: 5px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.fl-aircraft {
+  margin-left: 5px;
+  color: $yellow;
+  font-weight: 700;
+}

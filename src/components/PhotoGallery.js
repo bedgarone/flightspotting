@@ -3,7 +3,6 @@ import useFirestore from "../hooks/useFirestore";
 
 const PhotoGallery = () => {
   const { docs } = useFirestore("flights");
-  console.log(docs);
   return (
     <div className="photo-gallery">
       {docs.map((photo) => {

@@ -1,0 +1,31 @@
+// palette colors
+$orange: #ff7b00;
+$darkyellow: #ffc300;
+$yellow: #ffd60a;
+$blue: #003f7a;
+$darkblue: #001d3d;
+
+$colors: (
+  "orange": $orange,
+  "darkyellow": $darkyellow,
+  "yellow": $yellow,
+  "blue": $blue,
+  "darkblue": $darkblue,
+  "black": black,
+  "white": white,
+  "gray": rgb(143, 143, 143),
+);
+
+@each $key, $val in $colors {
+  .text-#{$key} {
+    color: $val;
+  }
+
+  .bg-#{$key} {
+    background-color: $val;
+  }
+
+  .outline-#{$key} {
+    border: 2px solid $val;
+  }
+}
