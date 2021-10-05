@@ -7,11 +7,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import { flights } from "../firebase/mockAPI";
+import FlightLabel from "./FlightLabel";
 
 const UploadForm = () => {
   const [file, setFile] = useState(null);
+  const [flight, setFlight] = useState({});
   const [targetAirport, setTargetAirport] = useState("");
-  const [arrivals, setArrivals] = useState([]);
+  const [flightsList, setFlightsList] = useState([]);
 
   const [startDate, setStartDate] = useState(new Date());
 
@@ -72,8 +74,8 @@ const UploadForm = () => {
     axios
       .request(options)
       .then(function (response) {
-        console.log("SETTING ARRIVALS");
-        setArrivals(response.data);
+        console.log("SETTING FLIGHTS");
+        setFlightsList(response.data);
       })
       .catch(function (error) {
         console.error(error);
@@ -93,11 +95,10 @@ const UploadForm = () => {
     //   .catch(function (error) {
     //     console.error(error);
     //   });
-    setArrivals(flights); // change to real API!
+    setFlightsList(flights); // change to real API!
   };
 
-  console.log(arrivals);
-  //console.log(options.url);
+  console.log(flightsList);
 
   return (
     <>
@@ -119,52 +120,32 @@ const UploadForm = () => {
       </form>
       <div className="row gap-1">
         <div className="col-12-xs col-6-lg flight-list">
-          {arrivals.arrivals &&
-            arrivals.arrivals.map((fl, key) => {
+          <div>Arrivals</div>
+          {flightsList.arrivals &&
+            flightsList.arrivals.map((fl, key) => {
               return (
-                <div
-                  className="flight-btn btn-blue outline-darkblue text-white"
+                <FlightLabel
+                  type="arrival"
+                  selectedFlight={flight}
+                  flight={fl}
+                  update={setFlight}
                   key={key}
-                >
-                  <div className="flex-row">
-                    <div className="fl-time">
-                      {fl.arrival.scheduledTimeLocal.substring(11, 16)}
-                    </div>
-                    <div className="btn-orange font-small">{fl.number}</div>
-                    <div className="airline">{fl.airline.name}</div>
-                    <div className="foreign-city font-small">
-                      ({fl.departure.airport.name})
-                    </div>
-                    <div className="fl-aircraft font-small">
-                      {fl.aircraft && fl.aircraft.model}
-                    </div>
-                  </div>
-                </div>
+                />
               );
             })}
         </div>
         <div className="col-12-xs col-6-lg flight-list">
-          {arrivals.arrivals &&
-            arrivals.arrivals.map((fl, key) => {
+          <div>Departures</div>
+          {flightsList.departures &&
+            flightsList.departures.map((fl, key) => {
               return (
-                <div
-                  className="flight-btn btn-blue outline-darkblue text-white"
+                <FlightLabel
+                  type="departure"
+                  selectedFlight={flight}
+                  flight={fl}
+                  update={setFlight}
                   key={key}
-                >
-                  <div className="flex-row">
-                    <div className="fl-time">
-                      {fl.arrival.scheduledTimeLocal.substring(11, 16)}
-                    </div>
-                    <div className="btn-orange font-small">{fl.number}</div>
-                    <div className="airline">{fl.airline.name}</div>
-                    <div className="foreign-city font-small">
-                      ({fl.departure.airport.name})
-                    </div>
-                    <div className="fl-aircraft font-small">
-                      {fl.aircraft && fl.aircraft.model}
-                    </div>
-                  </div>
-                </div>
+                />
               );
             })}
         </div>
