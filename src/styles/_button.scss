@@ -27,3 +27,23 @@
     }
   }
 }
+
+@mixin badge($bg-color: $blue) {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0 5px 0 5px;
+  line-height: 1.3em;
+  margin: 2px 2px 0 0;
+  border-radius: 5px;
+  background-color: $bg-color;
+}
+
+@each $key, $val in $colors {
+  .badge-#{$key} {
+    @include badge($val);
+  }
+  .badge-outlined-#{$key} {
+    @include badge(#fff);
+    border: 2px solid $val;
+  }
+}

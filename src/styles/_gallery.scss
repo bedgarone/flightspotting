@@ -1,10 +1,56 @@
 .photo-gallery {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: rgba(194, 194, 194, 0.133);
 }
 
 .photo-gallery {
   img {
-    width: 200px;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .flight-card {
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      cursor: pointer;
+      .flight-label {
+        width: 70px;
+        transition: width 0.3s;
+      }
+      .aircraft-name {
+        background-color: rgba(184, 184, 184, 0.85);
+      }
+    }
+  }
+
+  .flight-label {
+    position: absolute;
+    margin: 5px 0 0 5px;
+    width: fit-content;
+    transition: width 0.3s;
+  }
+
+  .aircraft-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    background-color: rgba(184, 184, 184, 0.6);
+    padding: 0 10px 0 10px;
+    margin-top: -30px;
+  }
+
+  .flight-info {
+    background-color: aquamarine;
+    padding-left: 10px;
+    border-radius: 0 0 10px 10px;
   }
 }

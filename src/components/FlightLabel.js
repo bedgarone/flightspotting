@@ -14,7 +14,7 @@ const FlightLabel = ({ type, selectedFlight, flight, update }) => {
     >
       <div className="flex-row">
         <div className="fl-time">
-          {type == "arrival"
+          {type === "arrival"
             ? flight.arrival.scheduledTimeLocal.substring(11, 16)
             : flight.departure.scheduledTimeLocal.substring(11, 16)}
         </div>
@@ -22,7 +22,7 @@ const FlightLabel = ({ type, selectedFlight, flight, update }) => {
         <div className="airline">{flight.airline.name}</div>
         <div className="foreign-city font-small">
           (
-          {type == "arrival"
+          {type === "arrival"
             ? flight.departure.airport.name
             : flight.arrival.airport.name}
           )

@@ -70,11 +70,9 @@ const UploadForm = () => {
   };
 
   const handleairtest = () => {
-    console.log(options);
     axios
       .request(options)
       .then(function (response) {
-        console.log("SETTING FLIGHTS");
         setFlightsList(response.data);
       })
       .catch(function (error) {
@@ -98,8 +96,6 @@ const UploadForm = () => {
     setFlightsList(flights); // change to real API!
   };
 
-  console.log(flightsList);
-
   return (
     <>
       <h1>{targetAirport}</h1>
@@ -111,12 +107,21 @@ const UploadForm = () => {
           }}
         />
         <input type="file" onChange={changeFile} />
-        {file && <ProgressBar file={file} setFile={setFile} />}
+        {file && (
+          <ProgressBar
+            file={file}
+            flight={flight}
+            setFile={setFile}
+            setFlight={setFlight}
+          />
+        )}
         <select onChange={handleAirport}>
           <option value="-">-</option>
           <option value="LPPR">LPPR - Porto</option>
         </select>
-        <div onClick={handleairtest}>Search Flights</div>
+        <div className="btn btn-orange text-white" onClick={handleairtest}>
+          Search Flights
+        </div>
       </form>
       <div className="row gap-1">
         <div className="col-12-xs col-6-lg flight-list">
